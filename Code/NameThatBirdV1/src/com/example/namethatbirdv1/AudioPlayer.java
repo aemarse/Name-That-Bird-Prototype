@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 public class AudioPlayer extends Activity {
 
-	//CLASS VARIABLES
+	// CLASS VARIABLES
 	public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
 //	private ProgressDialog mProgressDialog;
 	
@@ -90,13 +90,15 @@ public class AudioPlayer extends Activity {
 	    		loc[i]  = theObj.getString("loc");
 	    		file[i] = theObj.getString("file");
 	    		
-	            new DownloadFileAsync().execute(file[i]);
+//	            new DownloadFileAsync().execute(file[i]);
 	    		
 	    	} catch (JSONException e) {
 	    		// TODO Auto-generated catch block
 	    		e.printStackTrace();
 	    	}
 	    }
+	    
+	    new DownloadFileAsync(file).execute(file);
 	}
 	
 	// Create the download progress dialog
@@ -118,6 +120,15 @@ public class AudioPlayer extends Activity {
 	// Download File Class
 	class DownloadFileAsync extends AsyncTask<String, String, String> {
 		
+		int current = 0;
+		String[] paths;
+        String fpath;
+        
+        public DownloadFileAsync(String[] paths) {
+            super();
+            this.paths = paths;
+        }
+		
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -127,11 +138,17 @@ public class AudioPlayer extends Activity {
 		@Override
 		protected String doInBackground(String... aurl) {
 			
+			int rows = aurl.length;
+			
+			while(current < rows) {
+			
 			int count;
 			
 			try {
+				fpath = this.paths[current];
 				
-				URL url = new URL(aurl[0]);
+				Log.e("File URL: ", fpath);
+                URL url = new URL(fpath);
 				URLConnection conn = url.openConnection();
 				conn.connect();
 				
@@ -170,9 +187,10 @@ public class AudioPlayer extends Activity {
 				
 			} catch (Exception e) {
 			}
-			
 			return null;
 		}
+			return null;
+	}
 		
 //		protected void onProgressUpdate(String... progress) {
 ////			 Log.d("ANDRO_ASYNC",progress[0]);

@@ -12,60 +12,57 @@
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/t_fileTxt"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" >
+        android:layout_marginTop="30dp" >
 
         <ImageButton
             android:id="@+id/b_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_previous"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="#000000"
-            android:onClick="onClickPrev" />
+            android:onClick="onClickPrev"
+            android:src="@drawable/ic_action_previous" />
 
         <ImageButton
             android:id="@+id/b_pause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_pause"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="#000000"
-            android:onClick="onClickPause" />
-        
+            android:onClick="onClickPause"
+            android:src="@drawable/ic_action_pause" />
+
         <ImageButton
             android:id="@+id/b_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_play"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="#000000"
-            android:onClick="onClickPlay" />
-        
+            android:onClick="onClickPlay"
+            android:src="@drawable/ic_action_play" />
+
         <ImageButton
             android:id="@+id/b_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_next"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="#000000"
-            android:onClick="onClickNext" />
-        
+            android:onClick="onClickNext"
+            android:src="@drawable/ic_action_next" />
     </TableRow>
 
     <TextView
         android:id="@+id/t_recTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tableRow1"
         android:layout_centerHorizontal="true"
-        android:text="" 
+        android:layout_marginTop="100dp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/t_fileTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/t_recTxt"
-        android:layout_alignLeft="@+id/t_recTxt"
-        android:text="" 
+        android:layout_below="@+id/t_recTxt"
+        android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
