@@ -6,8 +6,6 @@
 
     <uses-permission 
         android:name="android.permission.INTERNET" />
-    <uses-permission
-    	android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -26,15 +24,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.namethatbirdv1.Listen"
-            android:label="@string/title_activity_listen"
-            android:parentActivityName="com.example.namethatbirdv1.NTBMain"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.namethatbirdv1.NTBMain" />
         </activity>
         <activity
             android:name="com.example.namethatbirdv1.AudioPlayer"
