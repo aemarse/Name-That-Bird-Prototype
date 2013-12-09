@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class AudioPlayer extends Activity {
+public class AudioPlayer extends Activity implements OnPreparedListener {
 
 	// CLASS VARIABLES
 	public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
@@ -226,19 +227,26 @@ public class AudioPlayer extends Activity {
 	//Play
 	public void onClickPlay(View v) {
 		updateText();
+		player.setOnPreparedListener(this);
 		playAudio();
 	}
 
 	//Next
 	public void onClickNext(View v) {
 		
-		if (currFile < numRecs) {
+		if (currFile < numRecs-1) {
 			currFile ++;
 		}
 		
 		updateText();
 		player.pause();
 		playAudio();
+	}
+	
+	@Override
+	public void onPrepared(MediaPlayer arg0) {
+		// TODO Auto-generated method stub
+		arg0.start();
 	}
 	
 	// HELPER FUNCTIONS
@@ -254,7 +262,7 @@ public class AudioPlayer extends Activity {
         	// Set source url
         	try {
         		player.setDataSource(file[currFile]);
-        		player.prepare();
+        		player.prepareAsync();
         	} catch (IllegalArgumentException e) {
         		// TODO Auto-generated catch block
         		e.printStackTrace();
@@ -269,7 +277,7 @@ public class AudioPlayer extends Activity {
         		e.printStackTrace();
         	}
         	
-			player.start();
+//			player.start();
 
 	}
 	
@@ -290,7 +298,8 @@ public class AudioPlayer extends Activity {
 	
 	// Updates the TextView to display the current info
 	public void updateText() {
-		String s_fileTxt = "Playing file: " + currFile + "/" + numRecs;
+		int currFileTxt = currFile + 1; 
+		String s_fileTxt = "Playing file: " + currFileTxt + "/" + numRecs;
 		String s_recTxt     = "Copyright: " + rec[currFile];
 		t_fileTxt.setText(s_fileTxt);
 		t_recTxt.setText(s_recTxt);
