@@ -200,6 +200,9 @@ public class AudioPlayer extends Activity implements OnPreparedListener {
 
 		@Override
 		protected void onPostExecute(String unused) {
+			
+			// Start Activity:Annotate
+			
 		}
 		
 	}
@@ -243,6 +246,7 @@ public class AudioPlayer extends Activity implements OnPreparedListener {
 		playAudio();
 	}
 	
+	// Called when the mediaplayer is done preparing
 	@Override
 	public void onPrepared(MediaPlayer arg0) {
 		// TODO Auto-generated method stub
